@@ -1,5 +1,5 @@
 class SpaceShip{
-    constructor(ctx, posX, posY, shipWidth, shipHeight, img){
+    constructor(ctx, posX, posY, shipWidth, shipHeight,){
         this.ctx = ctx
         this.shipPos = { x: posX, y: posY}
         this.shipSize = { w: shipWidth, h: shipHeight}
@@ -9,10 +9,16 @@ class SpaceShip{
         h: 700
         }
         this.init()
+        this.keys = {
+            keysLeftPress: false,
+            keysRightPress: false,
+            keysUpPress: false,
+            keysDownPress: false
+        }
     }
     init(){
         this.shipImg = new Image()
-        this.shipImg.src = `../img/spaceShip.png`
+        this.shipImg.src = '../img/NAVES-01.png'
     }
 
     draw(){
