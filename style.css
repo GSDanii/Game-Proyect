@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-global {
+    background-image: url('./img/BgGlobal.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
