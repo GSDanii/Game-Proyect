@@ -4,7 +4,6 @@ class Obstacles {
         this.speed = speed
         this.obstaclePos = { x: posX, y: posY }
         this.obstacleSize = { w: width, h: height }
-        
         this.init()
     }
     init() {

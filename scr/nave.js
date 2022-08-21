@@ -15,6 +15,7 @@ class SpaceShip{
             keysUpPress: false,
             keysDownPress: false
         }
+        this.proyectiles = []
     }
     init(){
         this.shipImg = new Image()
@@ -23,6 +24,7 @@ class SpaceShip{
 
     draw(){
        this.ctx.drawImage(this.shipImg,this.shipPos.x,this.shipPos.y, this.shipSize.w,this.shipSize.h)
+       this.proyectiles.forEach(proyec => proyec.draw())
     }
 
     moveLeft(){
@@ -33,7 +35,7 @@ class SpaceShip{
     
 
     moveRight(){
-        if(this.shipPos.x < 600)
+        if(this.shipPos.x < 800)
             this.shipPos.x += 20
     }
 
@@ -44,8 +46,12 @@ class SpaceShip{
     }
 
     moveDown(){
-        if(this.shipPos.y < 800){
+        if(this.shipPos.y < 750){
             this.shipPos.y += 20
         }
     }
+
+                           
+
+
 }
