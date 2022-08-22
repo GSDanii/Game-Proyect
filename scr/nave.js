@@ -5,8 +5,8 @@ class SpaceShip{
         this.shipSize = { w: shipWidth, h: shipHeight}
         this.img
         this.canvasSize={
-        w: 500,
-        h: 700
+        w: 900,
+        h: 900
         }
         this.init()
         this.keys = {
@@ -15,16 +15,16 @@ class SpaceShip{
             keysUpPress: false,
             keysDownPress: false
         }
-        this.proyectiles = []
+        
     }
     init(){
         this.shipImg = new Image()
-        this.shipImg.src = '../img/NAVES-01.png'
+        this.shipImg.src = '../img/spaceship-pic.png'
     }
 
     draw(){
        this.ctx.drawImage(this.shipImg,this.shipPos.x,this.shipPos.y, this.shipSize.w,this.shipSize.h)
-       this.proyectiles.forEach(proyec => proyec.draw())
+       
     }
 
     moveLeft(){
@@ -50,8 +50,5 @@ class SpaceShip{
             this.shipPos.y += 20
         }
     }
-
-                           
-
 
 }

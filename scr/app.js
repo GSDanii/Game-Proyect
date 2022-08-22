@@ -124,7 +124,7 @@ let game = {
 
     shoot() {
     this.proyectiles.push(
-        new Proyectil(this.ctx, this.ship.shipPos.x, this.ship.shipPos.y, 50, 50, 9));
+        new Proyectil(this.ctx, this.ship.shipPos.x, this.ship.shipPos.y, 50, 100, 9));
   }              
     
     
