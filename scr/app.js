@@ -8,7 +8,9 @@ let game = {
     },
     fps: 60,
     framesCounter: 0,
+    cooldown: 40,
     proyectiles: [],
+    canShoot: false,
 
 
     init(canvasId){
@@ -22,8 +24,8 @@ let game = {
     // MOVIMIENTO DE LA NAVE Y DISPARO
 
     setEventListeners(){
-        window.addEventListener('keydown', e => {
-            switch(e.keyCode){
+        window.addEventListener('keydown', ({keyCode}) => {
+            switch(keyCode){
                 case 65:
                 this.ship.keys.keysLeftPress = true;
                 break;  
@@ -41,9 +43,9 @@ let game = {
                 break;
             }
 })
-        window.addEventListener('keyup', e => {
+        window.addEventListener('keyup', ({keyCode}) => {
            
-            switch(e.keyCode){
+            switch(keyCode){
                 case 65:
                 this.ship.keys.keysLeftPress = false;
                 break;  
@@ -83,9 +85,11 @@ let game = {
     // SET INTERVAL PARA QUE PINTE LOS ELEMENTOS DEL JUEGO
 
     drawAll(){
+
        this.interval = setInterval(() =>{
 
             this.framesCounter++
+            this.cooldown++
             this.score++
             this.clearAll()
             if(this.ship.keys.keysLeftPress){
@@ -108,25 +112,51 @@ let game = {
             if(this.framesCounter % 50 === 0){
                 this.generateObstacles()        
             }
+            if(this.cooldown >= 16) {
+                this.canShoot = true
+            }
+            else {
+                this.canShoot = false
+            }
+            this.deleteObstacle()
+            this.colisionProyectil()
 
-        }, 60)
+        }, 1000 / this.fps)
     },
 
      //GENERADOR DE OBSTACULOS
 
    generateObstacles() {
+        const min = 4.5;
+        const max = 5.5;
         this.obstacles.push(
-            new Obstacles(this.ctx, Math.floor(Math.random()*750), 0, 100, 100, 5,)
+            new Obstacle(this.ctx, Math.floor(Math.random()*750), 0, 100, 100, (Math.random()*(max -min+1)+min))
         )
     },
 
      //GENERADOR DE DISPAROS
 
     shoot() {
-    this.proyectiles.push(
-        new Proyectil(this.ctx, this.ship.shipPos.x, this.ship.shipPos.y, 50, 100, 9));
-  }              
-    
+        if(this.canShoot) {
+            this.proyectiles.push(new Proyectil(this.ctx, this.ship.shipPos.x, this.ship.shipPos.y, 50, 100, 12));
+            this.cooldown = 0
+        }
+  },
+  
+  deleteObstacle() {
+    this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.y)
+    },
+
+    colisionProyectil(){
+        this.obstacles.forEach((el, i) => {
+        if(this.proyectiles[0].proyecPos.y < el.obstaclePos.y + 100 
+            && this.proyectiles[0].proyecPos.x + 50 > el.obstaclePos.x 
+            && this.proyectiles[0].proyecPos.x < el.obstaclePos.x + 100 ) {
+            this.obstacles.shift()
+            this.proyectiles.shift()
+        }
+    })
+    }
     
 }
 

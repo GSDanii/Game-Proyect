@@ -1,4 +1,4 @@
-class Obstacles {
+class Obstacle {
     constructor (ctx, posX, posY, width, height, speed,) {
         this.ctx = ctx
         this.speed = speed
@@ -23,8 +23,6 @@ class Obstacles {
 
         this.obstaclePos.y += this.speed
     }
-    deleteObstacle() {
-        this.obstaclePos.slice()                        
-    }
+    
 
 }
