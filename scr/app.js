@@ -24,8 +24,8 @@ let game = {
     // MOVIMIENTO DE LA NAVE Y DISPARO
 
     setEventListeners(){
-        window.addEventListener('keydown', ({keyCode}) => {
-            switch(keyCode){
+        window.addEventListener('keydown', (e) => {
+            switch(e.keyCode){
                 case 65:
                 this.ship.keys.keysLeftPress = true;
                 break;  
@@ -40,6 +40,11 @@ let game = {
                 break;
                 case 96:
                 this.shoot();
+                break;
+                case 32:
+                case 13:
+                e.preventDefault();
+                this.shoot()
                 break;
             }
 })
@@ -119,6 +124,7 @@ let game = {
                 this.canShoot = false
             }
             this.deleteItems()
+            
             this.colisionProyectil()
 
         }, 1000 / this.fps)
@@ -145,19 +151,26 @@ let game = {
   
   deleteItems() {
     this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.y)
-    this.obstacles = this.proyectiles.filter( => this.proyectiles.proyectPos.y  <= this.canvasSize.y)
+    this.proyectiles = this.proyectiles.filter(proyectil => proyectil.proyecPos.y >= 0)
     },
 
     colisionProyectil(){
-        this.obstacles.forEach((el, i) => {
-        if(this.proyectiles[0].proyecPos.y < el.obstaclePos.y + 100 
-            && this.proyectiles[0].proyecPos.x + 50 > el.obstaclePos.x 
-            && this.proyectiles[0].proyecPos.x < el.obstaclePos.x + 100 ) {
-            this.obstacles.shift()
-            this.proyectiles.shift()
+        this.obstacles.forEach((obs, i) => {
+            this.proyectiles.forEach((pro, j) => {
+                if(this.proyectiles.length > 0) {
+                if(pro.proyecPos.y < obs.obstaclePos.y + 100 
+            && pro.proyecPos.x + 50 > obs.obstaclePos.x 
+            && pro.proyecPos.x < obs.obstaclePos.x + 100 ) {
+            this.obstacles.splice(i, 1)
+            this.proyectiles.splice(j, 1)
+            }            
         }
+    })        
     })
-    }
+    },
+
+
+c
     
 }
 

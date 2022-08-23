@@ -19,3 +19,71 @@ body {
 .font {
     font-family: Luckiest Guy;
 }
+
+.title {
+    font-size: 100px;
+}
+
+/* boton */
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 35px auto;
+}
+
+.loader-button {
+    position: relative;
+    display: inline-block;
+    padding: 0 60px;
+    outline: none;
+    border: none;
+    background: #1d9650;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 24px;
+    font-family: "Space Mono";
+    font-weight: 800;
+    line-height: 4;
+    padding: 0;
+    overflow: visible;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 70%);
+    transition: color 0.1s ease-in 0.1s, transform 0.185s ease-in, box-shadow 0.15s ease-in;
+}
+
+.loader-button .content {
+    position: relative;
+    display: block;
+    z-index: 10;
+    padding: 0 60px;
+    background: #1d9650;
+    transform: translateY(-4px);
+    transition: all 0.2s;
+    border-radius: 4px;
+    line-height: 2;
+}
+
+.loader-button .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0B562B;
+    border-radius: 4px;
+}
+
+.loader-button:hover {
+    box-shadow: 0 3px 5px rgb(0 0 0 / 70%);
+    background: #2dad62
+}
+
+.loader-button:hover .content {
+    transform: translateY(-2px);
+
+}
