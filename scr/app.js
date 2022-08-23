@@ -118,7 +118,7 @@ let game = {
             else {
                 this.canShoot = false
             }
-            this.deleteObstacle()
+            this.deleteItems()
             this.colisionProyectil()
 
         }, 1000 / this.fps)
@@ -143,8 +143,9 @@ let game = {
         }
   },
   
-  deleteObstacle() {
+  deleteItems() {
     this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.y)
+    this.obstacles = this.proyectiles.filter( => this.proyectiles.proyectPos.y  <= this.canvasSize.y)
     },
 
     colisionProyectil(){
