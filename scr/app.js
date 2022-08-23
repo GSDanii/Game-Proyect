@@ -7,18 +7,34 @@ let game = {
         y: 900
     },
     fps: 60,
+    canStart: true,
     framesCounter: 0,
     cooldown: 40,
     proyectiles: [],
     canShoot: false,
+    lives: 3,
+    goImg: undefined,
+    space: undefined,
+    overFont: undefined,
+    posX: 0,
+    posY: 0,
 
+    
 
     init(canvasId){
-       this.ctx = document.querySelector(canvasId).getContext('2d'),
+        
+        this.ctx = document.querySelector(canvasId).getContext('2d'),
+        this.overFont = new Image()
+        this.overFont.src = '../img/prueba3.png'
+        this.space = new Image()
+        this.space.src = '../img/space3.jpg'
         this.setEventListeners(),
         this.createShip(),
         this.drawAll(),
-        this.drawSpace()
+        this.drawSpace(),
+        this.goImg = new Image()
+        this.goImg.src = '../img/gameover.png'
+
     },
 
     // MOVIMIENTO DE LA NAVE Y DISPARO
@@ -70,12 +86,26 @@ let game = {
 
     //GENERADOR DEL FONDO
 
-    drawSpace(){
-        const space = new Image()
-        space.src = '../img/space3.jpg'
-        this.ctx.drawImage(space, 0, 0, this.canvasSize.w, this.canvasSize.y)
-    
+    drawGameOver(){
+        this.ctx.drawImage(this.goImg,0 , 0, 900,900)
+        
     },
+
+    drawFont(){
+         this.ctx.drawImage(this.overFont, 0, 0, this.canvasSize.w, this.canvasSize.y)
+    },
+
+    drawSpace(){
+        this.ctx.drawImage(this.space, this.posX, this.posY, this.canvasSize.w, this.canvasSize.y)
+        this.ctx.drawImage(this.space, this.posX, this.posY - this.canvasSize.y, this.canvasSize.w, this.canvasSize.y)
+        this.spaceMove()
+    },
+    spaceMove(){
+      if (this.posY >= + this.canvasSize.y) {
+      this.posY = 0;
+    }
+    this.posY += 10;
+  },
 
     //GENERADOR DE LA NAVE
 
@@ -139,6 +169,7 @@ let game = {
         this.obstacles.push(
             new Obstacle(this.ctx, Math.floor(Math.random()*750), 0, 100, 100, (Math.random()*(max -min+1)+min))
         )
+
     },
 
      //GENERADOR DE DISPAROS
@@ -180,8 +211,27 @@ let game = {
             && this.ship.shipPos.x +100 > obs.obstaclePos.x 
                 && this.ship.shipPos.x < obs.obstaclePos.x + 100) {
                 this.obstacles.splice(i, 1)
+                this.lives--
+                if(this.lives === 0){
+                    this.lostGame()
+                }
             }
         })
+    },
+
+    lostGame(){
+        clearInterval(this.interval)
+        this.clearAll()
+        // const space = new Image()
+        // space.src = '../img/Blaster Shoot-01.png'
+        // this.ctx.drawImage(space, 0, 0, 900, 900)
+        // console.log('Hola Valentin')
+        // const goImg = new Image()
+        // goImg.src = '../img/80c80acba1f25bc6fdebf9abe2fdcb52.png'
+        // this.ctx.drawImage(goImg,0 , 0, 900, 900)
+        this.drawGameOver()
+        this.canStart = true
+
     }
     
 }
