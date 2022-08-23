@@ -124,8 +124,9 @@ let game = {
                 this.canShoot = false
             }
             this.deleteItems()
-            
             this.colisionProyectil()
+            this.colisionShip()
+            
 
         }, 1000 / this.fps)
     },
@@ -153,6 +154,8 @@ let game = {
     this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.y)
     this.proyectiles = this.proyectiles.filter(proyectil => proyectil.proyecPos.y >= 0)
     },
+    
+    //COLISIONS
 
     colisionProyectil(){
         this.obstacles.forEach((obs, i) => {
@@ -170,7 +173,16 @@ let game = {
     },
 
 
-c
+    colisionShip(){
+        this.obstacles.forEach((obs, i) => {
+            if(this.ship.shipPos.y < obs.obstaclePos.y + 100
+            && this.ship.shipPos.y +100 > obs.obstaclePos.y
+            && this.ship.shipPos.x +100 > obs.obstaclePos.x 
+                && this.ship.shipPos.x < obs.obstaclePos.x + 100) {
+                this.obstacles.splice(i, 1)
+            }
+        })
+    }
     
 }
 
