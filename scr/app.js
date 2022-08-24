@@ -4,7 +4,7 @@ let game = {
     score: 0,
     canvasSize : {
         w: 900,
-        y: 900
+        h: 900
     },
     fps: 60,
     canStart: true,
@@ -22,15 +22,13 @@ let game = {
     quitarVida2 : false,
     quitarVida1 : false,
     quitarVida: false,
-
+    winImg:undefined,
 
     init(canvasId){
         
         this.canvas = document.querySelector(canvasId)
         this.ctx = this.canvas.getContext('2d')
-        
         this.canvas.style.border = "solid  2px blue"
-            
         this.overFont = new Image()
         this.overFont.src = '../img/prueba3.png'
         this.space = new Image()
@@ -41,6 +39,8 @@ let game = {
         this.drawSpace(),
         this.goImg = new Image()
         this.goImg.src = '../img/gameover.png'
+        this.winImg = new Image()
+        this.winImg.src = "../img/win.png"
         
     },
 
@@ -93,23 +93,13 @@ let game = {
 
     //GENERADOR DEL FONDO
 
-    drawGameOver(){
-        this.ctx.drawImage(this.goImg,0 , 0, 900,900)
-        
-    },
-
-    drawFont() {
-        this.ctx.strokeStyle = "red";
-        this.ctx.strokeRect = (1, 1, 800, 800);
-    },
-
     drawSpace(){
-        this.ctx.drawImage(this.space, this.posX, this.posY, this.canvasSize.w, this.canvasSize.y)
-        this.ctx.drawImage(this.space, this.posX, this.posY - this.canvasSize.y, this.canvasSize.w, this.canvasSize.y)
+        this.ctx.drawImage(this.space, this.posX, this.posY, this.canvasSize.w, this.canvasSize.h)
+        this.ctx.drawImage(this.space, this.posX, this.posY - this.canvasSize.h, this.canvasSize.w, this.canvasSize.h)
         this.spaceMove()
     },
     spaceMove(){
-      if (this.posY >= + this.canvasSize.y) {
+      if (this.posY >= + this.canvasSize.h) {
       this.posY = 0;
     }
     this.posY += 10;
@@ -122,7 +112,7 @@ let game = {
     },
 
     clearAll(){
-        this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.y)
+        this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
     },
 
     // SET INTERVAL PARA QUE PINTE LOS ELEMENTOS DEL JUEGO
@@ -150,10 +140,9 @@ let game = {
 
            this.drawSpace()
            this.ship.draw()
-           this.drawFont()
             this.obstacles.forEach(elm => elm.draw())
             this.proyectiles.forEach(elm => elm.draw())
-            if(this.framesCounter % 50 === 0){
+            if(this.framesCounter % 40 === 0){
                 this.generateObstacles()        
             }
             if(this.cooldown >= 16) {
@@ -193,9 +182,16 @@ let game = {
   },
   
   deleteItems() {
-    this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.y)
+    if(this.obstacles.length !== 0){
+        if(this.obstacles[0].obstaclePos.y > this.canvasSize.h){
+        this.lostGame()
+    }
+    }
+    
+    // this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.y <= this.canvasSize.h)
     this.proyectiles = this.proyectiles.filter(proyectil => proyectil.proyecPos.y >= 0)
     },
+    
     
     //COLISIONS
 
@@ -239,12 +235,15 @@ let game = {
     lostGame(){
         clearInterval(this.interval)
         this.clearAll()
-        this.drawGameOver()
+        this.ctx.drawImage(this.goImg,0 , 0, this.canvasSize.w, this.canvasSize.h)
         this.canStart = true
     },
 
     winGame(){
-        
+        clearInterval(this.interval)
+        this.clearAll() 
+        this.ctx.drawImage(this.winImg,0 , 0, this.canvasSize.w, this.canvasSize.h) 
+        this.canStart = true
     },
 
     //DOM
@@ -269,7 +268,7 @@ let game = {
     enemiesDestroyed(){
         const score = document.querySelector('#score')
         score.innerHTML = this.enemies + ''
-        // score.innerHTML = 'Valentin'
+       
         
     }
 
