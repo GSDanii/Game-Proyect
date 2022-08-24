@@ -40,7 +40,7 @@ body {
 }
 
 .color-1 {
-    color: #8f0bf4;
+    color: #8a24d8;
     text-shadow: 10px 10px 10px rgba(75, 8, 191, 0.664);
 }
 
@@ -58,7 +58,7 @@ body {
     padding: 0 60px;
     outline: none;
     border: none;
-    background: #1d9650;
+    background: white;
     color: rgb(0, 0, 0);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -81,7 +81,7 @@ body {
     display: block;
     z-index: 10;
     padding: 0 60px;
-    background: rgba(182, 255, 47, 0.8);
+    background: yellow;
     transform: translateY(-4px);
     transition: all 0.2s;
     border-radius: 4px;
@@ -126,6 +126,7 @@ body {
 
 .info-size {
     font-size: 35px;
+    color: yellow;
 }
 
 .enemies {
@@ -136,4 +137,17 @@ body {
 .enemies p {
     padding-top: 0px;
     margin-top: 0px;
+}
+
+.text-info {
+    font-size: 25px;
+    color: yellow;
+    padding: 3px;
+}
+
+.flex-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 }

@@ -18,12 +18,19 @@ let game = {
     overFont: undefined,
     posX: 0,
     posY: 0,
+    enemies: 30,
+    quitarVida2 : false,
+    quitarVida1 : false,
+    quitarVida: false,
 
-    
 
     init(canvasId){
         
-        this.ctx = document.querySelector(canvasId).getContext('2d'),
+        this.canvas = document.querySelector(canvasId)
+        this.ctx = this.canvas.getContext('2d')
+        
+        this.canvas.style.border = "solid  2px blue"
+            
         this.overFont = new Image()
         this.overFont.src = '../img/prueba3.png'
         this.space = new Image()
@@ -34,7 +41,7 @@ let game = {
         this.drawSpace(),
         this.goImg = new Image()
         this.goImg.src = '../img/gameover.png'
-
+        
     },
 
     // MOVIMIENTO DE LA NAVE Y DISPARO
@@ -91,8 +98,9 @@ let game = {
         
     },
 
-    drawFont(){
-         this.ctx.drawImage(this.overFont, 0, 0, this.canvasSize.w, this.canvasSize.y)
+    drawFont() {
+        this.ctx.strokeStyle = "red";
+        this.ctx.strokeRect = (1, 1, 800, 800);
     },
 
     drawSpace(){
@@ -129,7 +137,6 @@ let game = {
             this.clearAll()
             if(this.ship.keys.keysLeftPress){
                 this.ship.moveLeft()
-            
             }
             if(this.ship.keys.keysRightPress){
                 this.ship.moveRight()
@@ -139,9 +146,11 @@ let game = {
             }
             if(this.ship.keys.keysDownPress){
                 this.ship.moveDown()
-            }
-            this.drawSpace()
-            this.ship.draw()
+           }
+
+           this.drawSpace()
+           this.ship.draw()
+           this.drawFont()
             this.obstacles.forEach(elm => elm.draw())
             this.proyectiles.forEach(elm => elm.draw())
             if(this.framesCounter % 50 === 0){
@@ -156,6 +165,8 @@ let game = {
             this.deleteItems()
             this.colisionProyectil()
             this.colisionShip()
+            this.removeHearts()
+            this.enemiesDestroyed()
             
 
         }, 1000 / this.fps)
@@ -197,6 +208,10 @@ let game = {
             && pro.proyecPos.x < obs.obstaclePos.x + 100 ) {
             this.obstacles.splice(i, 1)
             this.proyectiles.splice(j, 1)
+            this.enemies--
+            if(this.enemies === 0){
+                this.winGame()
+            }
             }            
         }
     })        
@@ -219,12 +234,45 @@ let game = {
         })
     },
 
+    // WIN/LOST CONDITION
+
     lostGame(){
         clearInterval(this.interval)
         this.clearAll()
         this.drawGameOver()
         this.canStart = true
+    },
+
+    winGame(){
+        
+    },
+
+    //DOM
+
+    removeHearts(){
+        const hearts = document.querySelector('#prueba')
+        const heart1 = document.querySelector("#h1")
+        const heart2 = document.querySelector("#h2")
+        const heart3 = document.querySelector("#h3")
+            if(this.lives === 2 && !this.quitarVida2){ //&& !quitarVida2
+                hearts.removeChild(heart3)
+                this.quitarVida2 = true
+            }else if(this.lives === 1 && !this.quitarVida1){
+                hearts.removeChild(heart2)
+                this.quitarVida1 = true;
+            }else if(this.lives === 0 && !this.quitarVida){
+                hearts.removeChild(heart1)
+                this.quitarVida = true
+            }   
+    },
+
+    enemiesDestroyed(){
+        const score = document.querySelector('#score')
+        score.innerHTML = this.enemies + ''
+        // score.innerHTML = 'Valentin'
+        
     }
-    
+
+
 }
 
