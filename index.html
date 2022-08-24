@@ -19,10 +19,10 @@
 
 <body class="bg-global">
     <main class="flex">
-        <div>
+        <div class="flex-left">
             <img src="" alt="">
-            <h1 class="font title"> IRON</h1>
-            <h1> SPACE</h1>
+            <h1 class="font title color"> IRON</h1>
+            <h1 class="font title color-1"> SPACE</h1>
             <div class="wrapper">
                 <button id="start" class="loader-button btn-active"><span class="content">START GAME</span><span
                         class="progress"><span class="progress-inner"></span></span></button>
@@ -33,17 +33,26 @@
         <div>
             <canvas id="Canvas" width=900 height=900></canvas>
         </div>
-        <div>
-            <h3>Puntuacion: <span>0</span></h3>
-            <p class="font">Lorem ipsum dolor, sit amet consectetur adipisicing <br> elit. Ex nulla, cum rem libero <br>
-                laudantium
-                aperiam
-                magni excepturi! Deserunt velit, <br> consequuntur, debitis quos nisi earum <br> sint nostrum veniam
-                modi dicta
-                voluptas?
+        <section>
+            <article>
+                <div class="lives">
+                    <p class="font info-size">LIVES: </p>
+                    <img class="heart" src="./img/heart.png" alt="heart">
+                    <img class="heart" src="./img/heart.png" alt="heart">
+                    <img class="heart" src="./img/heart.png" alt="heart">
+                </div>
+                <div class="enemies">
+                    <p class="font info-size">ENEMIGOS: <span>30</span></p>
+                </div>
+
+            </article>
+
+            <p class="font"> Bienvenido a IRON-SPACE!Las hordas de DATA y UX/UI atacan de nuevo!. Como miembro de las
+                fuerzas de IronHack tu mision es defender a la ciudadania y destruir las ultimas 30 naves enemigas.
+                Buena suerte!
             </p>
             <p>Controles</p>
-        </div>
+        </section>
     </main>
     <script src="./scr/proyectiles.js"></script>
     <script src="./scr/obstacle.js"></script>

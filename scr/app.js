@@ -27,7 +27,7 @@ let game = {
         this.overFont = new Image()
         this.overFont.src = '../img/prueba3.png'
         this.space = new Image()
-        this.space.src = '../img/space3.jpg'
+        this.space.src = '../img/bg.png'
         this.setEventListeners(),
         this.createShip(),
         this.drawAll(),
@@ -222,16 +222,8 @@ let game = {
     lostGame(){
         clearInterval(this.interval)
         this.clearAll()
-        // const space = new Image()
-        // space.src = '../img/Blaster Shoot-01.png'
-        // this.ctx.drawImage(space, 0, 0, 900, 900)
-        // console.log('Hola Valentin')
-        // const goImg = new Image()
-        // goImg.src = '../img/80c80acba1f25bc6fdebf9abe2fdcb52.png'
-        // this.ctx.drawImage(goImg,0 , 0, 900, 900)
         this.drawGameOver()
         this.canStart = true
-
     }
     
 }
