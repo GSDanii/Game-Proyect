@@ -1,66 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IRON-SPACE</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body class="bg-global">
+  <body class="bg-global">
     <main class="flex">
-        <div class="flex-left">
-            <img src="" alt="">
-            <h1 class="font title color"> IRON</h1>
-            <h1 class="font title color-1"> SPACE</h1>
-            <div class="wrapper">
-                <button id="start" class="loader-button btn-active"><span class="content">START GAME</span><span
-                        class="progress"><span class="progress-inner"></span></span></button>
-            </div>
-
-
+      <div class="flex-left">
+        <h2 class="font title color">IRON </h2>
+        <h2 class="font title color-1">SPACE</h2>
+        <div class="wrapper">
+          <button id="easy" class="loader-button btn-active">
+            <span class="content">EASY</span
+            ><span class="progress"><span class="progress-inner"></span></span>
+          </button>
         </div>
-        <div>
-            <canvas id="Canvas" width=900 height=900></canvas>
+        <div class="wrapper">
+          <button id="medium" class="loader-button btn-active">
+            <span class="content">MEDIUM</span
+            ><span class="progress"><span class="progress-inner"></span></span>
+          </button>
         </div>
-        <section class="flex-right">
-            <article>
-                <div id="prueba" class="lives">
-                    <p class="font info-size">LIVES: </p>
-                    <img id="h1" class="heart" src="./img/heart.png" alt="heart">
-                    <img id="h2" class="heart" src="./img/heart.png" alt="heart">
-                    <img id="h3" class="heart" src="./img/heart.png" alt="heart">
-                </div>
-                <div class="enemies">
-                    <p class="font info-size">ENEMIGOS: <span id="score">30</span></p>
-                </div>
-            </article>
+        <div class="wrapper">
+          <button id="hard" class="loader-button btn-active">
+            <span class="content">HARD</span
+            ><span class="progress"><span class="progress-inner"></span></span>
+          </button>
+        </div>
+        <div class="wrapper">
+          <button id="inferno" class="loader-button btn-active">
+            <span class="content">INFERNO</span
+            ><span class="progress"><span class="progress-inner"></span></span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <canvas id="Canvas" width="900" height="900"></canvas>
+      </div>
+      <section class="flex-right">
+        <article>
+          <div id="prueba" class="lives">
+            <p class="font info-size">LIVES:</p>
+            <img id="h1" class="heart" src="./img/heart.png" alt="heart" />
+            <img id="h2" class="heart" src="./img/heart.png" alt="heart" />
+            <img id="h3" class="heart" src="./img/heart.png" alt="heart" />
+          </div>
+          <div class="enemies">
+            <p class="font info-size">ENEMIGOS: <span id="score">30</span></p>
+          </div>
+        </article>
 
-            <p class="font text-info"> Bienvenido a IRON-SPACE!<br>Las hordas de DATA y UX/UI atacan <br> de nuevo! Como
-                miembro de las <br> fuerzas de IronHack tu mision es<br>defender a la ciudadania y destruir<br>las
-                ultimas
-                30 naves
-                enemigas.<br>
-                Buena suerte!
-            </p>
-            <p>Controles</p>
-        </section>
+        <p class="font text-info">
+        Welcome to IRON-SPACE!<br/>DATA and UX/UI hordes attack <br/>
+        again! As a member of the <br/>
+        IronHack forces your mission is<br> /defend citizenship and
+          destroy<br/>the last 30 enemy ships.<br/>
+        Good luck!
+        </p>
+        <img class="controller" src="./img/Controllers.png" alt="controller">
+      </section>
     </main>
+
     <script src="./scr/proyectiles.js"></script>
     <script src="./scr/obstacle.js"></script>
     <script src="./scr/nave.js"></script>
     <script src="./scr/app.js"></script>
     <script src="./scr/index.js"></script>
-</body>
-
+  </body>
 </html>

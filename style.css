@@ -1,6 +1,9 @@
+/* General */
+
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 .bg-global {
@@ -8,6 +11,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* Clases flex */
 
 .flex {
     display: flex;
@@ -26,12 +31,17 @@ body {
     align-items: center;
 }
 
+.flex-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
 .title {
     font-size: 150px;
     margin: 0px;
     padding: 0;
-
-
 }
 
 .color {
@@ -44,13 +54,14 @@ body {
     text-shadow: 10px 10px 10px rgba(75, 8, 191, 0.664);
 }
 
-/* boton */
+/* Botón */
 
 .wrapper {
     position: relative;
     display: inline-block;
     margin: 35px auto;
 }
+
 
 .loader-button {
     position: relative;
@@ -108,6 +119,15 @@ body {
 
 }
 
+.controller{
+    margin-top: 25px;
+    width: 400px;
+    height: 193px;
+    
+}
+
+/* Vidas */
+
 .heart {
     width: 40px;
     height: 40px;
@@ -122,11 +142,9 @@ body {
     margin: 0px;
 }
 
-.lives p {}
-
 .info-size {
     font-size: 35px;
-    color: yellow;
+    color:lime;
 }
 
 .enemies {
@@ -141,13 +159,7 @@ body {
 
 .text-info {
     font-size: 25px;
-    color: yellow;
+    color:lime;
     padding: 3px;
 }
 
-.flex-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-}
