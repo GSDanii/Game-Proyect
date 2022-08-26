@@ -157,6 +157,10 @@ body {
     margin-top: 0px;
 }
 
+#score{
+    color: red
+}
+
 .text-info {
     font-size: 25px;
     color:lime;

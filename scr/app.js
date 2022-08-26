@@ -25,7 +25,6 @@ let game = {
   winImg: undefined,
   shootAudio: new Audio("../audio/laser.mp3"),
   introAudio: new Audio("../audio/street-fighter.mp3"),
-  overFont: undefined,
 
   posX: 0,
   posY: 0,
@@ -51,8 +50,6 @@ let game = {
   },
 
   preloadImgs() {
-    this.overFont = new Image();
-    this.overFont.src = "../img/prueba3.png";
     this.space = new Image();
     this.space.src = "../img/bg.png";
     this.goImg = new Image();
@@ -267,9 +264,10 @@ let game = {
     this.introAudio.pause();
     this.obstacles = [];
     this.bullet = [];
-    this.lives = 3;
-    this.enemies = 30;
     this.canStart = true;
+    setTimeout(() => {
+      location.reload();
+    }, 4000);
   },
 
   winGame() {
@@ -278,6 +276,9 @@ let game = {
     this.ctx.drawImage(this.winImg, 0, 0, this.canvasSize.w, this.canvasSize.h);
     this.introAudio.pause();
     this.canStart = true;
+    setTimeout(() => {
+      location.reload();
+    }, 4000);
   },
 
   //DOM
