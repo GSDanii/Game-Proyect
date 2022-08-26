@@ -101,8 +101,6 @@ let game = {
     });
   },
 
-  //GENERADOR DEL FONDO
-
   drawSpace() {
     this.ctx.drawImage(
       this.space,
@@ -128,8 +126,6 @@ let game = {
     this.posY += 10;
   },
 
-  //GENERADOR DE LA NAVE
-
   createShip() {
     this.ship = new SpaceShip(this.ctx, 350, 750, 100, 150);
   },
@@ -137,8 +133,6 @@ let game = {
   clearAll() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
   },
-
-  // SET INTERVAL PARA QUE PINTE LOS ELEMENTOS DEL JUEGO
 
   drawAll() {
     this.interval = setInterval(() => {
@@ -170,8 +164,6 @@ let game = {
     }, 1000 / this.fps);
   },
 
-  //GENERADOR DE OBSTACULOS
-
   generateObstacles() {
     const min = 4.5;
     const max = 5.5;
@@ -186,8 +178,6 @@ let game = {
       )
     );
   },
-
-  //GENERADOR DE DISPAROS
 
   shoot() {
     if (this.canShoot) {
@@ -214,8 +204,6 @@ let game = {
     }
     this.bullet = this.bullet.filter((proyectil) => proyectil.proyecPos.y >= 0);
   },
-
-  //COLISIONS
 
   colisionProyectil() {
     this.obstacles.forEach((obs, i) => {
@@ -255,8 +243,6 @@ let game = {
     });
   },
 
-  // WIN/LOST CONDITION
-
   lostGame() {
     clearInterval(this.interval);
     this.clearAll();
@@ -280,8 +266,6 @@ let game = {
       location.reload();
     }, 4000);
   },
-
-  //DOM
 
   removeHearts() {
     const hearts = document.querySelector("#prueba");
