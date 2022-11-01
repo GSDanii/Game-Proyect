@@ -19,7 +19,7 @@ class SpaceShip {
   }
   init() {
     this.shipImg = new Image();
-    this.shipImg.src = "../img/spaceship-pic.png";
+    this.shipImg.src = "img/spaceship-pic.png";
   }
 
   draw() {

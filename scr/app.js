@@ -23,8 +23,8 @@ let game = {
   goImg: undefined,
   space: undefined,
   winImg: undefined,
-  shootAudio: new Audio("../audio/laser.mp3"),
-  introAudio: new Audio("../audio/street-fighter.mp3"),
+  shootAudio: new Audio("audio/laser.mp3"),
+  introAudio: new Audio("audio/street-fighter.mp3"),
 
   posX: 0,
   posY: 0,
