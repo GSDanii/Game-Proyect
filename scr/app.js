@@ -51,11 +51,11 @@ let game = {
 
   preloadImgs() {
     this.space = new Image();
-    this.space.src = "../img/bg.png";
+    this.space.src = "img/bg.png";
     this.goImg = new Image();
-    this.goImg.src = "../img/gameover.png";
+    this.goImg.src = "img/gameover.png";
     this.winImg = new Image();
-    this.winImg.src = "../img/win.png";
+    this.winImg.src = "img/win.png";
   },
 
   setMovement() {
@@ -196,6 +196,7 @@ let game = {
   },
 
   deleteItems() {
+
     if (
       this.obstacles.length !== 0 &&
       this.obstacles[0].obstaclePos.y > this.canvasSize.h

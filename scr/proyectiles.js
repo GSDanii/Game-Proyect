@@ -9,7 +9,7 @@ class Proyectil {
 
   init() {
     this.proyecImg = new Image();
-    this.proyecImg.src = "../img/Shoots-01.png";
+    this.proyecImg.src = "img/Shoots-01.png";
   }
 
   draw() {

@@ -8,7 +8,7 @@ class Obstacle {
   }
   init() {
     this.obsImg = new Image();
-    this.obsImg.src = "../img/NAVES-04.png";
+    this.obsImg.src = "img/NAVES-04.png";
   }
 
   draw() {
